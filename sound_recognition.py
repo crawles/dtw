@@ -131,7 +131,7 @@ mfccX = preprocess_mfcc(mfccX)
 #dists3i = np.zeros(mfccX.shape[1] + mfcc3.shape[1] + speed) + 1.25
 
 speed = 0
-dists3i = np.zeros(mfccX.shape[1]- window_size) + 1.5
+dists = np.zeros(mfccX.shape[1]- window_size) + 1.5
 window_size = (mfcc1.shape[1]+speed)
 for i in range(mfccX.shape[1] - window_size - 1):
 
@@ -142,12 +142,12 @@ for i in range(mfccX.shape[1] - window_size - 1):
     dist4i, cost4i, path4i = dtw(mfcc2.T, mfcci.T)
     dist5i, cost5i, path5i = dtw(mfcc3.T, mfcci.T)
     dist6i, cost6i, path6i = dtw(mfcc4.T, mfcci.T)
-    dists3i[i] = (dist3i + dist4i + dist5i + dist6i)/4
+    dists[i] = (dist3i + dist4i + dist5i + dist6i)/4
 
 
-plt.plot(dists3i)
+plt.plot(dists)
 
-word_match_idx = dists3i.argmin()
+word_match_idx = dists.argmin()
 word_match_idx_bnds = np.array([word_match_idx,np.ceil(word_match_idx+window_size)])
 samples_per_mfcc = 512#len(yX)/mfccX.shape[1]
 word_samp_bounds = (2/2) + (word_match_idx_bnds*samples_per_mfcc)
