@@ -8,8 +8,8 @@ import random
 a = [random.randrange(0,3) for i in range(10)]
 b = [random.randrange(0,2) for i in range(10)]
 
-x= np.array(a+[1, 1, 2, 3, 2, 0]+a)
-y=np.array(b[0:3]+[0, 1, 1, 2, 3, 2, 1])
+x= np.array([0,0,0,0,0,0,0, 1, 2, 3, 2, 1,0,0,0,0,0])
+y=np.array([0,0, 1.0, 1.3,1.6, 2,2.3,2.6, 3,3.5,3,2.6,2.3,2,1.6,1.3,1,0,0,0])
 
 
 plt.plot(x,'r', label='x')
